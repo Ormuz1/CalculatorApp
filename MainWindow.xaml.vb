@@ -1,45 +1,47 @@
-﻿Class MainWindow
-    Dim resultBuffer As String = "0"
-    Dim fullEquation As String = ""
-    Dim result As Integer = 0
+﻿Imports System.Data
+
+Class MainWindow
     Private Sub OnNumberClicked(sender As Button, e As RoutedEventArgs) Handles btnNumber0.Click, btnNumber1.Click, btnNumber2.Click, btnNumber3.Click,
     btnNumber4.Click, btnNumber5.Click, btnNumber6.Click, btnNumber7.Click, btnNumber8.Click, btnNumber9.Click
-        If resultBuffer = "0" Then
-            resultBuffer = sender.Content
+        If txtResult.Text = "0" Then
+            txtResult.Text = sender.Content
         Else
-            resultBuffer += sender.Content
+            txtResult.Text += sender.Content
         End If
-        txtResult.Text = resultBuffer
+        txtResult.Text = txtResult.Text
 
     End Sub
 
     Private Sub OnDelClicked(sender As Button, e As RoutedEventArgs) Handles btnDelete.Click
-        resultBuffer = resultBuffer.Substring(0, resultBuffer.Length - 1)
-        If resultBuffer = "" Then
-            resultBuffer = "0"
+        txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 1)
+        If txtResult.Text = "" Then
+            txtResult.Text = "0"
         End If
-        txtResult.Text = resultBuffer
+        txtResult.Text = txtResult.Text
     End Sub
 
     Private Sub OnCEClicked(sender As Button, e As RoutedEventArgs) Handles btnClearEverything.Click
-        resultBuffer = "0"
-        fullEquation = ""
-        txtResult.Text = resultBuffer
+        txtResult.Text = "0"
+        txtFullEquation.Text = ""
+        txtResult.Text = txtResult.Text
     End Sub
 
     Private Sub OnOperatorClicked(sender As Button, e As RoutedEventArgs) Handles btnOperationDiv.Click, btnOperationMul.Click, btnOperationSub.Click,
     btnOperationSum.Click
         Dim operation = sender.Content
-        fullEquation += resultBuffer + " " + operation + " "
-        Select Case operation
-            Case "+"
-                MsgBox("Add")
-            Case "-"
-                MsgBox("Subtract")
-            Case "*"
-                MsgBox("Multiply")
-            Case "/"
-                MsgBox("Divide")
-        End Select
+        txtFullEquation.Text += txtResult.Text + " " + operation + " "
+        txtResult.Text = 0
+
+    End Sub
+
+    Private Sub OnEqualsClicked(sender As Button, e As RoutedEventArgs) Handles btnEquals.Click
+        If txtFullEquation.Text = "0" Then
+            Exit Sub
+        End If
+
+        txtFullEquation.Text += txtResult.Text
+        Dim result As String = New DataTable().Compute(txtFullEquation.Text, Nothing).ToString()
+        txtResult.Text = result
+        txtFullEquation.Text = ""
     End Sub
 End Class

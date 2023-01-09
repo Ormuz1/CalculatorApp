@@ -5,25 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="297" Width="265">
+        Title="MainWindow" Height="300" Width="267">
     <Grid Background="#FF85DCBA">
-        <Button x:Name="btnNumber0" Content="0" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Height="38" Width="182" Background="#FFDC5656" RenderTransformOrigin="0.412,0.5"/>
-        <Button x:Name="btnNumber1" Content="1" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="51" Height="33"/>
-        <Button x:Name="btnNumber2" Content="2" HorizontalAlignment="Left" Margin="76,191,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="50" Height="33"/>
-        <Button x:Name="btnNumber3" Content="3" HorizontalAlignment="Left" Margin="141,191,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="51" Height="33"/>
-        <Button x:Name="btnNumber4" Content="4" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="51" Height="33"/>
-        <Button x:Name="btnNumber5" Content="5" HorizontalAlignment="Left" Margin="76,150,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="50" Height="33"/>
-        <Button x:Name="btnNumber6" Content="6" HorizontalAlignment="Left" Margin="141,150,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="51" Height="33"/>
-        <Button x:Name="btnNumber7" Content="7" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="51" Height="32"/>
-        <Button x:Name="btnNumber8" Content="8" HorizontalAlignment="Left" Margin="76,110,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="50" Height="32"/>
-        <Button x:Name="btnNumber9" Content="9" HorizontalAlignment="Left" Margin="141,110,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="51" Height="32"/>
-        <Button x:Name="btnClearEverything" Content="CE" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="116" Height="33"/>
-        <Button x:Name="btnDelete" Content="DEL" HorizontalAlignment="Left" Margin="141,69,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="51" Height="33"/>
-        <Button x:Name="btnOperationSum" Content="+" HorizontalAlignment="Left" Margin="206,69,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="50" Height="33"/>
-        <Button x:Name="btnOperationSub" Content="-" HorizontalAlignment="Left" Margin="206,110,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="50" Height="32"/>
-        <Button x:Name="btnOperationMul" Content="*" HorizontalAlignment="Left" Margin="206,150,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="50" Height="33"/>
-        <Button x:Name="btnOperationDiv" Content="/" HorizontalAlignment="Left" Margin="206,191,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="50" Height="33"/>
-        <Button x:Name="btnEquals" Content="=" HorizontalAlignment="Left" Margin="206,234,0,0" VerticalAlignment="Top" Background="#FFDC5656" Width="50" Height="33"/>
-        <TextBox x:Name="txtResult" Margin="0,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="245" Height="45" HorizontalAlignment="Center" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <StackPanel>
+            <StackPanel Background="White" Margin="5,15,5,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="txtFullEquation" TextWrapping="Wrap" TextAlignment="Right" Opacity="0.65" FontSize="12" Width="230" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,5,0"><Run Language="es-ar" Text="0"/></TextBlock>
+                <TextBlock x:Name="txtResult" TextWrapping="Wrap" TextAlignment="Right" Width="233" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"><Run Language="es-ar" Text="0"/></TextBlock>
+            </StackPanel>
+            <Grid HorizontalAlignment="Center" Height="208" Margin="0,15,0,0" Width="237">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="btnNumber0" Content="0" Background="#FFDC5656" Grid.ColumnSpan="3" Grid.Row="4"/>
+                <Button x:Name="btnNumber1" Content="1" Background="#FFDC5656"  Grid.Row="3"/>
+                <Button x:Name="btnNumber2" Content="2" Background="#FFDC5656" Grid.Row="3" Grid.Column="1"/>
+                <Button x:Name="btnNumber3" Content="3" Background="#FFDC5656" Grid.Row="3" Grid.Column="2"/>
+                <Button x:Name="btnNumber4" Content="4" Background="#FFDC5656" Grid.Row="2"/>
+                <Button x:Name="btnNumber5" Content="5" Background="#FFDC5656" Grid.Column="1" Grid.Row="2"/>
+                <Button x:Name="btnNumber6" Content="6" Background="#FFDC5656" Grid.Column="2" Grid.Row="2"/>
+                <Button x:Name="btnNumber7" Content="7" Background="#FFDC5656" Grid.Row="1"/>
+                <Button x:Name="btnNumber8" Content="8" Background="#FFDC5656" Grid.Row="1" Grid.Column="1"/>
+                <Button x:Name="btnNumber9" Content="9" Background="#FFDC5656" Grid.Row="1" Grid.Column="2"/>
+                <Button x:Name="btnClearEverything" Content="CE" Background="#FFDC5656" Grid.ColumnSpan="2"/>
+                <Button x:Name="btnDelete" Content="DEL" Background="#FFDC5656" Grid.Column="2"/>
+                <Button x:Name="btnOperationSum" Content="+" Background="#FFDC5656" Grid.Column="3"/>
+                <Button x:Name="btnOperationSub" Content="-" Background="#FFDC5656" Grid.Column="3" Grid.Row="1"/>
+                <Button x:Name="btnOperationMul" Content="*" Background="#FFDC5656" Grid.Column="3" Grid.Row="2"/>
+                <Button x:Name="btnOperationDiv" Content="/" Background="#FFDC5656" Grid.Row="3" Grid.Column="3"/>
+                <Button x:Name="btnEquals" Content="=" Background="#FFDC5656" Grid.Row="4" Grid.Column="3"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>
